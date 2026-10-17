@@ -5,7 +5,7 @@ import type { AuthorAssociation, CheckResult, IssueComment, Logger } from './typ
 
 /** Hidden marker that identifies pr-checkup's sticky comment. Must stay stable across versions. */
 export const MARKER = '<!-- pr-checkup -->';
-export const PROJECT_URL = 'https://github.com/<OWNER>/pr-checkup';
+export const PROJECT_URL = 'https://github.com/MAcemek/pr-checkup';
 
 export interface RenderInput {
   results: CheckResult[];

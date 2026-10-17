@@ -1,6 +1,5 @@
 name: 'PR Checkup'
 description: 'Gentle PR triage: one friendly checklist comment and a label that clears itself. Never closes a PR.'
-author: '<YOUR NAME>'
 
 branding:
   icon: 'check-square'

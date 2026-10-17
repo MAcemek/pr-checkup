@@ -76,7 +76,7 @@ jobs:
   checkup:
     runs-on: ubuntu-latest
     steps:
-      - uses: <OWNER>/pr-checkup@v0
+      - uses: MAcemek/pr-checkup@v0
 ```
 
 That's it. No checkout step and no config file are needed; the defaults are designed to be

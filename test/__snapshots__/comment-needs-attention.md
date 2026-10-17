@@ -15,4 +15,4 @@ Thanks for opening this pull request! I ran a quick checkup and found a few thin
   - _How to fix:_ Consider splitting it.
 
 ---
-<sub>Nothing here closes or blocks your PR. I re-check automatically whenever you push or edit the description, and this comment updates itself. · Powered by <a href="https://github.com/<OWNER>/pr-checkup">pr-checkup</a></sub>
+<sub>Nothing here closes or blocks your PR. I re-check automatically whenever you push or edit the description, and this comment updates itself. · Powered by <a href="https://github.com/MAcemek/pr-checkup">pr-checkup</a></sub>

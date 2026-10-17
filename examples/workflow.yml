@@ -20,7 +20,7 @@ jobs:
   checkup:
     runs-on: ubuntu-latest
     steps:
-      - uses: <OWNER>/pr-checkup@v0
+      - uses: MAcemek/pr-checkup@v0
         # Optional settings (these are the defaults):
         # with:
         #   config-path: .github/pr-checkup.yml

@@ -21,12 +21,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<OWNER>/pr-checkup.git"
+    "url": "git+https://github.com/MAcemek/pr-checkup.git"
   },
   "bugs": {
-    "url": "https://github.com/<OWNER>/pr-checkup/issues"
+    "url": "https://github.com/MAcemek/pr-checkup/issues"
   },
-  "homepage": "https://github.com/<OWNER>/pr-checkup#readme",
+  "homepage": "https://github.com/MAcemek/pr-checkup#readme",
   "keywords": [
     "github-action",
     "pull-request",
@@ -35,7 +35,6 @@
     "open-source",
     "contributors"
   ],
-  "author": "<YOUR NAME>",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "3.0.1",

@@ -32421,7 +32421,7 @@ var github = __nccwpck_require__(9248);
 
 /** Hidden marker that identifies pr-checkup's sticky comment. Must stay stable across versions. */
 const MARKER = '<!-- pr-checkup -->';
-const PROJECT_URL = 'https://github.com/<OWNER>/pr-checkup';
+const PROJECT_URL = 'https://github.com/MAcemek/pr-checkup';
 function isFirstTimer(association) {
     return association === 'FIRST_TIME_CONTRIBUTOR' || association === 'FIRST_TIMER';
 }

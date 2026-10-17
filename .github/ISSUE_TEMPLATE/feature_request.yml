@@ -1,0 +1,25 @@
+name: Feature request
+description: Suggest a new check, option or improvement.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for the idea! pr-checkup aims to stay gentle, so suggestions that help contributors fix their PRs are especially welcome.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the kind of pull requests or maintainer pain this is about.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like pr-checkup to do?
+      description: If it is a new check, what should it look for, and what should the comment say?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've considered

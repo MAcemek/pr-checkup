@@ -1,0 +1,54 @@
+{
+  "description": "A first-time contributor opens a PR with the template left unchanged, source changes without tests, a stray lockfile change and a whitespace-only file.",
+  "eventName": "pull_request_target",
+  "now": "2026-10-17T12:00:00Z",
+  "repo": { "owner": "octo-org", "repo": "widgets" },
+  "pull": {
+    "number": 101,
+    "title": "Update stuff",
+    "body": "## What does this PR do?\n\n<!-- Describe your change and why it is needed. -->\n\n## Related issue\n\n<!-- Fixes #... -->\n\n## Checklist\n\n- [ ] I added or updated tests\n- [ ] I updated the documentation\n",
+    "state": "open",
+    "draft": false,
+    "authorLogin": "eager-newcomer",
+    "authorType": "User",
+    "authorAssociation": "FIRST_TIME_CONTRIBUTOR",
+    "baseRef": "main",
+    "baseSha": "1111111111111111111111111111111111111111",
+    "headSha": "2222222222222222222222222222222222222222",
+    "additions": 163,
+    "deletions": 88,
+    "changedFiles": 3,
+    "labels": []
+  },
+  "files": [
+    {
+      "filename": "src/parser.ts",
+      "status": "modified",
+      "additions": 40,
+      "deletions": 5,
+      "changes": 45,
+      "patch": "@@ -10,7 +10,42 @@ export function parse(input: string) {\n-  return input.split(',');\n+  return input.split(',').map((part) => part.trim());"
+    },
+    {
+      "filename": "src/utils/format.ts",
+      "status": "modified",
+      "additions": 3,
+      "deletions": 3,
+      "changes": 6,
+      "patch": "@@ -1,3 +1,3 @@\n-export function pad(value: string) {\n-    return value.padStart(4);\n-}\n+export function pad(value: string) {\n+  return value.padStart(4);\n+}"
+    },
+    {
+      "filename": "package-lock.json",
+      "status": "modified",
+      "additions": 120,
+      "deletions": 80,
+      "changes": 200
+    }
+  ],
+  "contents": {
+    "main:.github/pull_request_template.md": "## What does this PR do?\n\n<!-- Describe your change and why it is needed. -->\n\n## Related issue\n\n<!-- Fixes #... -->\n\n## Checklist\n\n- [ ] I added or updated tests\n- [ ] I updated the documentation\n"
+  },
+  "comments": [],
+  "repoLabels": ["bug", "enhancement"],
+  "recentPrCount": 0
+}

@@ -1,0 +1,37 @@
+name: Bug report
+description: Something pr-checkup did was wrong or confusing.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report this! The more detail you share, the faster we can fix it.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Include the comment pr-checkup posted, or the error from the workflow log.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+  - type: input
+    id: pr-link
+    attributes:
+      label: Link to the pull request or workflow run
+      placeholder: https://github.com/owner/repo/pull/123
+  - type: textarea
+    id: config
+    attributes:
+      label: Your workflow file and .github/pr-checkup.yml
+      render: yaml
+  - type: input
+    id: version
+    attributes:
+      label: pr-checkup version
+      placeholder: v0.1.0
+    validations:
+      required: true

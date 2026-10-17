@@ -1,0 +1,169 @@
+# Copy this file to .github/pr-checkup.yml in your repository.
+# Every key is optional: anything you leave out keeps the default shown here.
+# pr-checkup always reads this file from the base branch, never from the PR,
+# so contributors can't change the rules in their own pull request.
+
+skip:
+  # Don't check draft PRs until they're marked "Ready for review".
+  drafts: true
+  # Don't check PRs opened by bots such as Dependabot or Renovate.
+  bots: true
+  # Authors with these associations are trusted and never checked.
+  # Possible values: OWNER, MEMBER, COLLABORATOR, CONTRIBUTOR,
+  # FIRST_TIME_CONTRIBUTOR, FIRST_TIMER, MANNEQUIN, NONE
+  author_associations: [OWNER, MEMBER, COLLABORATOR]
+  # GitHub usernames that are never checked (case-insensitive).
+  authors: []
+  # PRs carrying any of these labels are skipped.
+  labels: [skip-checkup]
+
+comment:
+  # Post an "all good" comment even when nothing needs attention and there is
+  # no earlier pr-checkup comment to update.
+  post_when_passing: false
+  # Greet first-time contributors at the top of the comment.
+  welcome_first_timers: true
+
+messages:
+  # Placeholders: {author} = PR author's username, {repo} = owner/name.
+  welcome: '👋 Welcome, @{author}, and thank you for your first contribution to {repo}!'
+  intro: 'Thanks for opening this pull request! I ran a quick checkup and found a few things that would help maintainers review it faster:'
+  all_good: 'Everything looks good. Thanks for making this easy to review! A maintainer will take a look soon.'
+  suggestions: "**Suggestions** (optional, these won't add a label):"
+  footer: 'Nothing here closes or blocks your PR. I re-check automatically whenever you push or edit the description, and this comment updates itself.'
+
+# Every check accepts:
+#   enabled:    turn the check on or off
+#   level:      "required" (a failure adds the label) or "info" (shown as a suggestion only)
+#   message:    replaces the default problem text when the check fails ({placeholders} allowed)
+#   how_to_fix: replaces the default "How to fix" text when the check fails
+checks:
+  linked-issue:
+    enabled: true
+    level: required
+    # true = only "Fixes #123" / "Closes #123" / "Resolves #123" counts; a bare #123 is not enough.
+    require_keyword: false
+    # Extra regular expressions that count as a link, e.g. Jira keys: ['\b[A-Z]+-\d+\b']
+    extra_patterns: []
+
+  template-filled:
+    enabled: true
+    level: required
+    # The first of these files that exists on the base branch is used as the template.
+    template_paths:
+      - .github/pull_request_template.md
+      - .github/PULL_REQUEST_TEMPLATE.md
+      - pull_request_template.md
+      - PULL_REQUEST_TEMPLATE.md
+      - docs/pull_request_template.md
+      - docs/PULL_REQUEST_TEMPLATE.md
+    # Minimum number of characters the author must add on top of the template.
+    min_added_chars: 20
+    # Headings (without the leading #) that must not be left empty.
+    required_sections: []
+    # If the template has a checklist, at least one item must be ticked.
+    require_checked_box: true
+    # message placeholders: {added_chars}, {min_added_chars}, {sections}
+
+  description:
+    enabled: true
+    level: required
+    # Minimum characters the author wrote (template text and HTML comments don't count).
+    min_length: 30
+    # message placeholders: {length}, {min_length}
+
+  tests-included:
+    enabled: true
+    level: required
+    # When a file matching source_globs changes, a file matching test_globs should change too.
+    source_globs:
+      - 'src/**'
+      - 'lib/**'
+      - 'app/**'
+      - 'pkg/**'
+      - 'internal/**'
+      - 'cmd/**'
+    test_globs:
+      - '**/test/**'
+      - '**/tests/**'
+      - '**/__tests__/**'
+      - '**/spec/**'
+      - '**/*.test.*'
+      - '**/*.spec.*'
+      - '**/*_test.*'
+      - '**/test_*.*'
+      - '**/*Test.*'
+      - '**/*Tests.*'
+    # Files that never count as source changes.
+    ignore:
+      - '**/*.md'
+      - '**/*.txt'
+      - '**/*.json'
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '**/*.css'
+      - '**/*.svg'
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.gif'
+    # message placeholders: {source_count}, {source_files}
+
+  unrelated-files:
+    enabled: true
+    level: required
+    # lockfile name: manifest that should change alongside it (same directory).
+    lockfiles:
+      package-lock.json: package.json
+      npm-shrinkwrap.json: package.json
+      yarn.lock: package.json
+      pnpm-lock.yaml: package.json
+      bun.lock: package.json
+      Cargo.lock: Cargo.toml
+      poetry.lock: pyproject.toml
+      uv.lock: pyproject.toml
+      Pipfile.lock: Pipfile
+      Gemfile.lock: Gemfile
+      composer.lock: composer.json
+      go.sum: go.mod
+    # Paths that contributors normally shouldn't edit by hand.
+    generated_globs:
+      - 'dist/**'
+      - 'build/**'
+      - 'vendor/**'
+      - 'node_modules/**'
+      - '**/*.min.js'
+      - '**/*.min.css'
+    # Flag modified files whose changes are whitespace only.
+    whitespace_only: true
+    # message placeholders: {lockfiles}, {generated}, {whitespace}
+
+  diff-size:
+    enabled: true
+    level: info
+    max_files: 30
+    # Added plus deleted lines.
+    max_lines: 800
+    # Files left out of the count.
+    ignore:
+      - '**/package-lock.json'
+      - '**/npm-shrinkwrap.json'
+      - '**/yarn.lock'
+      - '**/pnpm-lock.yaml'
+      - '**/bun.lock'
+      - '**/Cargo.lock'
+      - '**/poetry.lock'
+      - '**/uv.lock'
+      - '**/Gemfile.lock'
+      - '**/composer.lock'
+      - '**/go.sum'
+      - '**/*.snap'
+      - 'dist/**'
+    # message placeholders: {files}, {lines}, {max_files}, {max_lines}
+
+  pr-burst:
+    # Off by default. Uses the GitHub search API to count PRs the author opened anywhere on GitHub.
+    enabled: false
+    level: info
+    max_prs: 10
+    window_hours: 24
+    # message placeholders: {count}, {max_prs}, {window_hours}

@@ -1,0 +1,7 @@
+# pr-checkup's configuration for its own repository.
+# dist/ is committed on purpose (GitHub Actions run the bundled file), so it is not "generated noise" here.
+checks:
+  unrelated-files:
+    generated_globs: ['node_modules/**', 'coverage/**']
+  tests-included:
+    source_globs: ['src/**']

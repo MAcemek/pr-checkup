@@ -1,0 +1,39 @@
+name: 'PR Checkup'
+description: 'Gentle PR triage: one friendly checklist comment and a label that clears itself. Never closes a PR.'
+author: '<YOUR NAME>'
+
+branding:
+  icon: 'check-square'
+  color: 'green'
+
+inputs:
+  github-token:
+    description: 'Token used to read the PR and to comment and label. The default GITHUB_TOKEN is enough.'
+    required: false
+    default: '${{ github.token }}'
+  config-path:
+    description: 'Path to the config file, read from the base branch (never from the PR).'
+    required: false
+    default: '.github/pr-checkup.yml'
+  label:
+    description: "Label added while something needs the author's attention and removed once everything passes. Set to an empty string to disable labeling."
+    required: false
+    default: 'needs-author-attention'
+  fail-on-issues:
+    description: 'Mark the workflow run as failed when a required check does not pass.'
+    required: false
+    default: 'false'
+  dry-run:
+    description: 'Run every check and print the comment to the log, but do not comment, label or fail.'
+    required: false
+    default: 'false'
+
+outputs:
+  result:
+    description: '"pass", "needs-attention" or "skipped".'
+  failed-checks:
+    description: 'Comma-separated IDs of the checks that did not pass, including suggestions.'
+
+runs:
+  using: 'node24'
+  main: 'dist/index.js'

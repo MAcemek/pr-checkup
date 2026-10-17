@@ -1,0 +1,58 @@
+{
+  "name": "pr-checkup",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A gentle PR triage GitHub Action: one friendly checklist comment, a label that clears itself, and never closes a PR.",
+  "type": "module",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "ncc build src/index.ts -o dist --license licenses.txt",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dry-run": "tsx scripts/dry-run.ts",
+    "all": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<OWNER>/pr-checkup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/<OWNER>/pr-checkup/issues"
+  },
+  "homepage": "https://github.com/<OWNER>/pr-checkup#readme",
+  "keywords": [
+    "github-action",
+    "pull-request",
+    "triage",
+    "maintainers",
+    "open-source",
+    "contributors"
+  ],
+  "author": "<YOUR NAME>",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "3.0.1",
+    "@actions/github": "9.1.1",
+    "minimatch": "10.2.6",
+    "yaml": "2.9.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.19.2",
+    "@vercel/ncc": "0.45.0",
+    "eslint": "10.13.0",
+    "globals": "17.13.0",
+    "prettier": "3.9.10",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.2",
+    "vitest": "5.0.5"
+  }
+}

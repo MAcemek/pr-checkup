@@ -1,0 +1,61 @@
+{
+  "description": "A returning contributor fixed everything after an earlier checkup: the old comment should flip to 'all good' and the label should be removed.",
+  "eventName": "pull_request_target",
+  "now": "2026-10-17T12:00:00Z",
+  "repo": { "owner": "octo-org", "repo": "widgets" },
+  "pull": {
+    "number": 102,
+    "title": "Cache parsed config between runs",
+    "body": "## What does this PR do?\n\nCaches the parsed configuration in memory so repeated calls skip the YAML parse. This cuts startup time roughly in half for large configs.\n\n## Related issue\n\nFixes #7\n\n## Checklist\n\n- [x] I added or updated tests\n- [ ] I updated the documentation\n",
+    "state": "open",
+    "draft": false,
+    "authorLogin": "steady-contributor",
+    "authorType": "User",
+    "authorAssociation": "CONTRIBUTOR",
+    "baseRef": "main",
+    "baseSha": "3333333333333333333333333333333333333333",
+    "headSha": "4444444444444444444444444444444444444444",
+    "additions": 64,
+    "deletions": 3,
+    "changedFiles": 2,
+    "labels": ["needs-author-attention"]
+  },
+  "files": [
+    {
+      "filename": "src/cache.ts",
+      "status": "added",
+      "additions": 40,
+      "deletions": 0,
+      "changes": 40,
+      "patch": "@@ -0,0 +1,40 @@\n+export const cache = new Map<string, unknown>();"
+    },
+    {
+      "filename": "test/cache.test.ts",
+      "status": "added",
+      "additions": 24,
+      "deletions": 3,
+      "changes": 27,
+      "patch": "@@ -0,0 +1,24 @@\n+import { cache } from '../src/cache.js';"
+    }
+  ],
+  "contents": {
+    "main:.github/pull_request_template.md": "## What does this PR do?\n\n<!-- Describe your change and why it is needed. -->\n\n## Related issue\n\n<!-- Fixes #... -->\n\n## Checklist\n\n- [ ] I added or updated tests\n- [ ] I updated the documentation\n",
+    "main:.github/pr-checkup.yml": "checks:\n  diff-size:\n    max_lines: 2000\n"
+  },
+  "comments": [
+    {
+      "id": 555,
+      "body": "<!-- pr-checkup -->\n## 🩺 PR checkup\n\nAn earlier checkup that found problems.\n",
+      "userLogin": "github-actions[bot]",
+      "userType": "Bot"
+    },
+    {
+      "id": 556,
+      "body": "Thanks, I'll fix those now!",
+      "userLogin": "steady-contributor",
+      "userType": "User"
+    }
+  ],
+  "repoLabels": ["bug", "needs-author-attention"],
+  "recentPrCount": 1
+}

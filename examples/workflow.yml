@@ -1,0 +1,29 @@
+# Copy this file to .github/workflows/pr-checkup.yml in your repository.
+name: PR checkup
+
+on:
+  # pull_request_target lets the action comment on PRs from forks.
+  # It is safe here because pr-checkup never checks out or runs the PR's code.
+  pull_request_target:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: pr-checkup-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  checkup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: <OWNER>/pr-checkup@v0
+        # Optional settings (these are the defaults):
+        # with:
+        #   config-path: .github/pr-checkup.yml
+        #   label: needs-author-attention
+        #   fail-on-issues: false
+        #   dry-run: false

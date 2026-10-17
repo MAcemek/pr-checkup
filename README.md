@@ -180,15 +180,15 @@ keep the hard gates for the clearly abusive cases.
 
 ## How it compares
 
-<!-- TODO(publish): re-check each project's current README before publishing and correct anything that has changed. -->
+|                                    | pr-checkup                | [Anti Slop](https://github.com/peakoss/anti-slop)               | [Vouch](https://github.com/mitchellh/vouch)             |
+| ---------------------------------- | ------------------------- | --------------------------------------------------------------- | ------------------------------------------------------- |
+| Approach                           | Triage checklist          | Rule-based filtering (34 checks, acts once `max-failures` fail) | Trust gating (an explicit list of vouched contributors) |
+| Closes PRs                         | **Never**                 | Yes by default (`close-pr: true`), and can also lock            | Optional (`auto-close`, off by default)                 |
+| Tells the author how to fix things | Yes, per check            | One custom message (`failure-pr-message`, empty by default)     | No, the author needs a vouch                            |
+| Re-checks on every push            | Yes, and clears its label | Quick start runs on `opened` and `reopened` only                | Runs on `opened` and `reopened`                         |
+| Welcomes first-time contributors   | Yes                       | No                                                              | No                                                      |
 
-|                                    | pr-checkup                | [Anti Slop](https://github.com/peakoss/anti-slop) | [Vouch](https://github.com/mitchellh/vouch) | Slopper          |
-| ---------------------------------- | ------------------------- | ------------------------------------------------- | ------------------------------------------- | ---------------- |
-| Approach                           | Triage checklist          | Rule-based filtering (22 rules)                   | Trust gating (vouched contributors)         | Reputation lists |
-| Closes or blocks PRs               | **Never**                 | Yes, can auto-close                               | Gates unvouched contributors                | Depends on setup |
-| Tells the author how to fix things | Yes, per check            | Partly                                            | No                                          | No               |
-| Re-checks on every push            | Yes, and clears its label | Varies                                            | n/a                                         | n/a              |
-| Welcomes first-time contributors   | Yes                       | No                                                | No                                          | No               |
+_Checked against each project's README in October 2026._
 
 These tools solve different problems and can be combined.
 

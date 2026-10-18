@@ -1,6 +1,6 @@
 {
   "name": "pr-checkup",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "A gentle PR triage GitHub Action: one friendly checklist comment, a label that clears itself, and never closes a PR.",
   "type": "module",

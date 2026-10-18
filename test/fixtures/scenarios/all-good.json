@@ -45,7 +45,7 @@
   "comments": [
     {
       "id": 555,
-      "body": "<!-- pr-checkup -->\n## 🩺 PR checkup\n\nAn earlier checkup that found problems.\n",
+      "body": "<!-- pr-checkup -->\n## PR checkup\n\nAn earlier checkup that found problems.\n",
       "userLogin": "github-actions[bot]",
       "userType": "Bot"
     },

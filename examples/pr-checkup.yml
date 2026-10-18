@@ -26,7 +26,7 @@ comment:
 
 messages:
   # Placeholders: {author} = PR author's username, {repo} = owner/name.
-  welcome: '👋 Welcome, @{author}, and thank you for your first contribution to {repo}!'
+  welcome: 'Welcome, @{author}, and thank you for your first contribution to {repo}!'
   intro: 'Thanks for opening this pull request! I ran a quick checkup and found a few things that would help maintainers review it faster:'
   all_good: 'Everything looks good. Thanks for making this easy to review! A maintainer will take a look soon.'
   suggestions: "**Suggestions** (optional, these won't add a label):"

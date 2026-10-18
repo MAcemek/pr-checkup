@@ -9,50 +9,23 @@ re-checks on every push and edit, and **removes the label by itself** once the a
 fixed things. Maintainers get a clean "ready for review" signal, and newcomers get a
 welcome and clear instructions instead of a closed PR.
 
-- 🩺 One sticky comment, edited in place. Never a pile of bot comments.
-- 🏷️ A label that clears itself when the PR is ready.
-- 👋 A warm welcome for first-time contributors.
-- 🔒 Safe on `pull_request_target`: reads PR metadata through the API, never runs PR code.
-- ⚙️ Seven checks, each with its own thresholds, level and wording.
+- One sticky comment, edited in place, instead of a new bot comment on every run.
+- A label that clears itself when the PR is ready.
+- A welcome line for first-time contributors.
+- Safe on `pull_request_target`: reads PR metadata through the API and never runs PR code.
+- Seven checks, each with its own thresholds, level and wording.
 
 ## What contributors see
 
-A first-time contributor who left the template empty and changed source code without tests
-gets this comment:
+A pull request that left the template unfilled and changed source code without tests gets
+this comment:
 
-> ## 🩺 PR checkup
->
-> 👋 Welcome, @eager-newcomer, and thank you for your first contribution to octo-org/widgets!
->
-> Thanks for opening this pull request! I ran a quick checkup and found a few things that
-> would help maintainers review it faster:
->
-> - ⬜ **Linked issue**: I couldn't find a link to an issue in the title or description.
->   - _How to fix:_ Mention the issue this PR addresses, for example `Fixes #123`. If there
->     isn't one yet, opening an issue first is a great way to agree on the approach before you
->     put in more time.
-> - ⬜ **PR template filled in**: The description is still the unchanged pull request
->   template. None of the checklist items are ticked.
->   - _How to fix:_ Fill in each section of the template with details about your change. Tick
->     the items that apply by changing `[ ]` to `[x]`. You can edit the description at any
->     time and I'll check again.
-> - ⬜ **Tests included**: Source files changed (`src/parser.ts`) but no test files did.
->   - _How to fix:_ If you can, add or update a test that covers this change. If a test
->     doesn't make sense here (for example, a pure refactor), just say so in the description
->     and a maintainer can take it from there.
-> - ✅ **Only related files changed**
->
-> ---
->
-> <sub>Nothing here closes or blocks your PR. I re-check automatically whenever you push or
-> edit the description, and this comment updates itself.</sub>
+![pr-checkup comment on a pull request](docs/comment.png)
 
-When they push a fix, the same comment updates. Once everything passes it reads
-"Everything looks good. Thanks for making this easy to review!" and the label is removed.
+When the author pushes a fix, the same comment updates. Once everything passes it reads
+"Everything looks good" and the label is removed.
 
-<!-- TODO(publish): replace the quoted example above with a real screenshot from the sandbox test. -->
-
-## 30-second setup
+## Setup
 
 Create `.github/workflows/pr-checkup.yml`:
 
@@ -79,7 +52,7 @@ jobs:
       - uses: MAcemek/pr-checkup@v0
 ```
 
-That's it. No checkout step and no config file are needed; the defaults are designed to be
+No checkout step and no config file are needed; the defaults are designed to be
 useful out of the box. To customise, copy [`examples/pr-checkup.yml`](examples/pr-checkup.yml)
 to `.github/pr-checkup.yml`.
 
@@ -159,24 +132,19 @@ Every check accepts `message` and `how_to_fix` overrides with `{placeholders}`, 
 `messages` section controls the welcome line, intro, "all good" text and footer. The
 available placeholders for each check are listed in the example config.
 
-## Why gentle?
+## Why not auto-close?
 
-Maintainers are drowning in low-effort and AI-generated pull requests, and the first wave of
-tools fights back by closing them automatically. That works against spam, but it also
-closes the door on real newcomers whose first PR is simply missing a few things. A closed PR
-with a terse reason teaches people that open source is hostile.
+Tools that close low-quality pull requests automatically work well against spam, but they
+also close PRs from real contributors who only missed a step. pr-checkup takes a softer
+approach:
 
-pr-checkup takes the other side of that trade-off:
+- It never closes or locks a PR. The worst outcome is a label and a checklist.
+- It says what is missing and how to fix it.
+- Every push re-runs the checks, and the label is removed when the PR is ready.
+- It posts one comment per PR, edited in place, and nothing on PRs that already pass.
 
-- **It never closes or locks anything.** The worst outcome is a label and a checklist.
-- **It tells people how to fix things**, in plain, friendly language.
-- **It forgives.** Every push re-runs the checks, and the label disappears when the PR is ready.
-- **It keeps the noise down**: one comment per PR, edited in place, and no comment at all on
-  PRs that are already fine.
-
-You can filter your review queue with `-label:needs-author-attention` and spend your time on
-PRs that are ready. It also pairs well with stricter tools: run pr-checkup for everyone and
-keep the hard gates for the clearly abusive cases.
+Filter your review queue with `-label:needs-author-attention` to see the PRs that are ready.
+pr-checkup can also run alongside stricter tools.
 
 ## How it compares
 

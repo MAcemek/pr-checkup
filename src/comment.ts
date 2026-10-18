@@ -21,9 +21,9 @@ export function isFirstTimer(association: AuthorAssociation): boolean {
 
 function renderItem(result: CheckResult): string[] {
   if (result.status === 'pass') {
-    return [`- ✅ **${result.title}**`];
+    return [`- [x] **${result.title}**`];
   }
-  const lines = [`- ⬜ **${result.title}**: ${result.message}`];
+  const lines = [`- [ ] **${result.title}**: ${result.message}`];
   if (result.howToFix !== '') {
     lines.push(`  - _How to fix:_ ${result.howToFix}`);
   }
@@ -36,7 +36,7 @@ export function renderComment(input: RenderInput): string {
   const suggestions = shown.filter((result) => result.level === 'info' && result.status === 'fail');
   const needsAttention = required.some((result) => result.status === 'fail');
 
-  const lines: string[] = [MARKER, '## 🩺 PR checkup', ''];
+  const lines: string[] = [MARKER, '## PR checkup', ''];
   if (input.welcome) {
     lines.push(
       fillTemplate(input.messages.welcome, {

@@ -78,7 +78,7 @@ describe('renderComment', () => {
 
   it('only greets first-time contributors when asked to', () => {
     const greeting =
-      '👋 Welcome, @eager-newcomer, and thank you for your first contribution to octo-org/widgets!';
+      'Welcome, @eager-newcomer, and thank you for your first contribution to octo-org/widgets!';
     expect(renderComment(input(PASSING, true))).toContain(greeting);
     expect(renderComment(input(PASSING, false))).not.toContain('Welcome');
   });
@@ -86,11 +86,11 @@ describe('renderComment', () => {
   it('uses the intro when a required check fails and lists how to fix it', () => {
     const body = renderComment(input(FAILING));
     expect(body).toContain(DEFAULT_CONFIG.messages.intro);
-    expect(body).toContain('- ⬜ **Description**: The description is empty.');
+    expect(body).toContain('- [ ] **Description**: The description is empty.');
     expect(body).toContain(
       '  - _How to fix:_ Add a few sentences about what this PR changes and why.',
     );
-    expect(body).toContain('- ✅ **Linked issue**');
+    expect(body).toContain('- [x] **Linked issue**');
   });
 
   it('hides not-applicable checks', () => {
@@ -99,7 +99,7 @@ describe('renderComment', () => {
 
   it('shows failing info checks under Suggestions and hides passing ones', () => {
     expect(renderComment(input(FAILING))).toContain(
-      `${DEFAULT_CONFIG.messages.suggestions}\n\n- ⬜ **Reviewable size**`,
+      `${DEFAULT_CONFIG.messages.suggestions}\n\n- [ ] **Reviewable size**`,
     );
     expect(renderComment(input(PASSING))).not.toContain('Reviewable size');
   });

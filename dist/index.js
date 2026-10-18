@@ -32427,9 +32427,9 @@ function isFirstTimer(association) {
 }
 function renderItem(result) {
     if (result.status === 'pass') {
-        return [`- ✅ **${result.title}**`];
+        return [`- [x] **${result.title}**`];
     }
-    const lines = [`- ⬜ **${result.title}**: ${result.message}`];
+    const lines = [`- [ ] **${result.title}**: ${result.message}`];
     if (result.howToFix !== '') {
         lines.push(`  - _How to fix:_ ${result.howToFix}`);
     }
@@ -32440,7 +32440,7 @@ function renderComment(input) {
     const required = shown.filter((result) => result.level === 'required');
     const suggestions = shown.filter((result) => result.level === 'info' && result.status === 'fail');
     const needsAttention = required.some((result) => result.status === 'fail');
-    const lines = [MARKER, '## 🩺 PR checkup', ''];
+    const lines = [MARKER, '## PR checkup', ''];
     if (input.welcome) {
         lines.push(fillTemplate(input.messages.welcome, {
             author: input.authorLogin,
@@ -32517,7 +32517,7 @@ const DEFAULT_CONFIG = {
         welcome_first_timers: true,
     },
     messages: {
-        welcome: '👋 Welcome, @{author}, and thank you for your first contribution to {repo}!',
+        welcome: 'Welcome, @{author}, and thank you for your first contribution to {repo}!',
         intro: 'Thanks for opening this pull request! I ran a quick checkup and found a few things that would help maintainers review it faster:',
         all_good: 'Everything looks good. Thanks for making this easy to review! A maintainer will take a look soon.',
         suggestions: "**Suggestions** (optional, these won't add a label):",
@@ -33005,10 +33005,10 @@ function cell(text) {
 }
 function resultLabel(result) {
     if (result.status === 'pass')
-        return '✅ pass';
+        return 'Pass';
     if (result.status === 'not-applicable')
-        return '➖ n/a';
-    return result.level === 'required' ? '⬜ needs attention' : '💡 suggestion';
+        return 'N/A';
+    return result.level === 'required' ? 'Needs attention' : 'Suggestion';
 }
 function renderSummary(input) {
     const lines = [

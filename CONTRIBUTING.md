@@ -1,7 +1,6 @@
 # Contributing to pr-checkup
 
-Thanks for helping! pr-checkup exists to make open source friendlier, so please be kind in
-issues, reviews and code.
+Thanks for contributing. Please be respectful in issues, reviews and code.
 
 ## Setup
 
@@ -43,7 +42,7 @@ of date.
 
 1. Add the ID to `CHECK_IDS` in `src/types.ts`.
 2. Add its config interface, default values and schema entry in `src/config.ts`.
-3. Write `src/checks/<id>.ts` exporting a pure `run…(ctx, config)` function that returns
+3. Write `src/checks/<id>.ts` exporting a pure `run<Name>(ctx, config)` function that returns
    `pass(...)`, `fail(...)` or `notApplicable(...)`.
 4. Register it in `CHECK_RUNNERS` and `CHECK_TITLES` in `src/checks/index.ts`.
 5. Add `test/checks/<id>.test.ts` with passing and failing cases.

@@ -15,9 +15,9 @@ function cell(text: string): string {
 }
 
 function resultLabel(result: CheckResult): string {
-  if (result.status === 'pass') return '✅ pass';
-  if (result.status === 'not-applicable') return '➖ n/a';
-  return result.level === 'required' ? '⬜ needs attention' : '💡 suggestion';
+  if (result.status === 'pass') return 'Pass';
+  if (result.status === 'not-applicable') return 'N/A';
+  return result.level === 'required' ? 'Needs attention' : 'Suggestion';
 }
 
 export function renderSummary(input: SummaryInput): string {

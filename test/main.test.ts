@@ -63,7 +63,7 @@ describe('runAction: needs attention', () => {
     expect(result.commentAction).toBe('created');
     expect(result.labelAction).toBe('added');
     expect(result.commentBody?.startsWith(MARKER)).toBe(true);
-    expect(result.commentBody).toContain('👋 Welcome, @eager-newcomer');
+    expect(result.commentBody).toContain('Welcome, @eager-newcomer');
     expect(h.api.writes.map((w) => w.method)).toEqual(['createComment', 'createLabel', 'addLabel']);
     expect(h.outputs).toEqual({
       result: 'needs-attention',

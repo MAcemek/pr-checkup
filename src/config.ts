@@ -105,7 +105,7 @@ export const DEFAULT_CONFIG: Config = {
     welcome_first_timers: true,
   },
   messages: {
-    welcome: '👋 Welcome, @{author}, and thank you for your first contribution to {repo}!',
+    welcome: 'Welcome, @{author}, and thank you for your first contribution to {repo}!',
     intro:
       'Thanks for opening this pull request! I ran a quick checkup and found a few things that would help maintainers review it faster:',
     all_good:
